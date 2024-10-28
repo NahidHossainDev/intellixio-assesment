@@ -5,10 +5,9 @@ import React from "react";
 
 interface ProductListProps {
 	products: Product[];
-	onOpenModal: (product: Product) => void;
 }
 
-export const ProductList: React.FC<ProductListProps> = ({ products, onOpenModal }) => {
+export const ProductList: React.FC<ProductListProps> = ({ products }) => {
 	const router = useRouter();
 	const pathname = usePathname();
 	return (

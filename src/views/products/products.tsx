@@ -23,14 +23,10 @@ export const Products: React.FC = () => {
 	const selectedProductId = searchParams.get("pID");
 	const router = useRouter();
 
-	const handleOpenModal = useCallback((product: Product) => {
-		setSelectedProduct(product);
-	}, []);
-
 	const handleCloseModal = useCallback(() => {
 		router.push("/products");
 		setSelectedProduct(null);
-	}, []);
+	}, [router]);
 
 	useEffect(() => {
 		selectedProductId &&
@@ -40,7 +36,7 @@ export const Products: React.FC = () => {
 	return (
 		<div>
 			<BackToHome />
-			<ProductList products={paginatedProducts} onOpenModal={handleOpenModal} />
+			<ProductList products={paginatedProducts} />
 			<div className='h-4' />
 			<PaginationControls currentPage={currentPage} totalPages={totalPages} onPageChange={handlePageChange} />
 			{selectedProduct && <ProductModal product={selectedProduct} onClose={handleCloseModal} />}
